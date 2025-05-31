@@ -1,18 +1,19 @@
 WITH orders AS (
   SELECT DATE(order_date) AS date, sku, SUM(revenue) AS revenue
-  FROM `airbyte-demo-461419`.`dbt_pmishra`.`fct_orders`
+  FROM {{ ref('fct_orders') }}
   GROUP BY date, sku
 ),
 ads AS (
   SELECT DATE(ad_date) AS date, sku, SUM(ad_spend) AS ad_spend
-  FROM `airbyte-demo-461419`.`dbt_pmishra`.`fct_ads`
+  FROM {{ ref('fct_ads') }}
   GROUP BY date, sku
 ),
 inventory AS (
   SELECT DATE(snapshot_date) AS date, sku, MAX(afn_fulfillable_quantity) AS stock
-  FROM `airbyte-demo-461419`.`dbt_pmishra`.`fct_inventory`
+  FROM {{ ref('fct_inventory') }}
   GROUP BY date, sku
 )
+
 
 SELECT
   o.date,
