@@ -1,21 +1,50 @@
-
 version: 2
 
 models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+  - name: fct_orders
+    description: "Fact table for Amazon orders"
+    columns:
+      - name: order_date
+        tests: [not_null]
+      - name: revenue
+        tests: [not_null, numeric]
+      - name: sku
+        tests: [not_null]
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+  - name: fct_ads
+    description: "Fact table for Amazon ad spend"
+    columns:
+      - name: ad_date
+        tests: [not_null]
+      - name: ad_spend
+        tests: [not_null, numeric]
+      - name: sku
+        tests: [not_null]
+
+  - name: fct_inventory
+    description: "Fact table for inventory stock"
+    columns:
+      - name: snapshot_date
+        tests: [not_null]
+      - name: sku
+        tests: [not_null]
+      - name: afn_fulfillable_quantity
+        tests: [not_null, numeric]
+
+  - name: mrt_kpi_daily
+    description: "Marketing + Inventory KPIs by date and SKU"
+    columns:
+      - name: date
+        tests: [not_null]
+      - name: sku
+        tests: [not_null]
+      - name: revenue
+        tests: [numeric]
+      - name: ad_spend
+        tests: [numeric]
+      - name: tacos
+        tests: [numeric]
+      - name: stock
+        tests: [numeric]
+      - name: days_of_cover
+        tests: [numeric]
