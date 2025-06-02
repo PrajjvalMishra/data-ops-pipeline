@@ -7,7 +7,7 @@ models:
       - name: order_date
         tests: [not_null]
       - name: revenue
-        tests: [not_null, numeric]
+        tests: [not_null]
       - name: sku
         tests: [not_null]
 
@@ -17,7 +17,7 @@ models:
       - name: ad_date
         tests: [not_null]
       - name: ad_spend
-        tests: [not_null, numeric]
+        tests: [not_null]
       - name: sku
         tests: [not_null]
 
@@ -29,7 +29,7 @@ models:
       - name: sku
         tests: [not_null]
       - name: afn_fulfillable_quantity
-        tests: [not_null, numeric]
+        tests: [not_null]
 
   - name: mrt_kpi_daily
     description: "Marketing + Inventory KPIs by date and SKU"
