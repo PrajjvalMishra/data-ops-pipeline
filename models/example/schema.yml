@@ -41,9 +41,7 @@ models:
       - name: revenue
         tests: [not_null]
       - name: ad_spend
-      
       - name: tacos
-       
       - name: stock
         tests: [not_null]
       - name: days_of_cover
