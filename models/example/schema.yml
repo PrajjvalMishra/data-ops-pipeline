@@ -39,12 +39,12 @@ models:
       - name: sku
         tests: [not_null]
       - name: revenue
-        tests: [numeric]
+        tests: [not_null]
       - name: ad_spend
-        tests: [numeric]
+        tests: [not_null]
       - name: tacos
-        tests: [numeric]
+        tests: [not_null]
       - name: stock
-        tests: [numeric]
+        tests: [not_null]
       - name: days_of_cover
-        tests: [numeric]
+        tests: [not_null]
