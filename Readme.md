@@ -119,8 +119,7 @@ Looker dashboard
 🙋‍♂️ Author
 Prajjval Mishra
 📧 prajjvalmishra18@gmail.com
-🔗 LinkedIn
-🧑‍💻 GitHub
+🔗 [LinkedIn](https://www.linkedin.com/in/prajjvalmishra/)
 
 ⚠️ Note on Access
 Sandbox credentials (SP-API, Ads API, Slack webhook, and GCP project) were not provided. This solution uses realistic mock data and simulates alerting logic. The entire pipeline is fully production-ready and can connect to live data sources with minimal changes once credentials are shared.
