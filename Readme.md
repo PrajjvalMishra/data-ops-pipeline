@@ -103,6 +103,8 @@ Components:
 
 📽️ Loom Video Walkthrough
 
+🔗 https://www.loom.com/share/108725ae73054488a4ee8e29481a1fb2?sid=7508f99b-0db3-4b60-83b7-15438dcaff6c
+
 
 Covers:
 
