@@ -1,0 +1,37 @@
+name: dbt Run & Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  dbt-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dbt
+        run: |
+          pip install dbt-bigquery
+
+      - name: Set up credentials
+        run: |
+          echo "${{ secrets.GCP_KEY }}" > /tmp/gcp_key.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp_key.json
+
+      - name: Run dbt
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp_key.json
+        run: |
+          dbt deps
+          dbt build
+          dbt test
