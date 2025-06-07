@@ -61,7 +61,9 @@ SELECT * FROM {{ ref('mrt_kpi_daily') }} WHERE days_of_cover <= 0
 All tests are run and verified via dbt Cloud.
 
 🔁 CI/CD in dbt Cloud
+
 ![DBT Build](https://github.com/PrajjvalMishra/data-ops-pipeline/actions/workflows/dbt.yml/badge.svg)
+
 dbt Cloud Job created with steps:
 
 dbt deps
