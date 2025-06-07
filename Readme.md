@@ -122,3 +122,13 @@ Prajjval Mishra
 
 ⚠️ Note on Access
 Sandbox credentials (SP-API, Ads API, Slack webhook, and GCP project) were not provided. This solution uses realistic mock data and simulates alerting logic. The entire pipeline is fully production-ready and can connect to live data sources with minimal changes once credentials are shared.
+
+### 🔁 Stretch Goals Not Implemented (Why)
+
+The following stretch items were intentionally not implemented due to constraints:
+
+- **SP-API Retry Logic**: Not applicable as real API credentials were not shared.
+- **Pytest Unit Tests**: dbt handles all SQL logic and testing; no Python transformation layer present.
+- **Metaplane Monitoring**: Requires integration with live data; simulated alerting logic used instead.
+
+> All components are ready to be extended with these features once live credentials are available.
