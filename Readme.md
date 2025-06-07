@@ -74,16 +74,8 @@ Job can be scheduled or triggered manually on push
 🔔 Slack Alert Simulation (No Webhook)
 As real Slack webhook was not available, this query simulates the daily 09:00 EST alert:
 
-sql
-Copy
-Edit
-SELECT
-  CURRENT_DATE() - 1 AS report_date,
-  SUM(revenue) AS total_revenue,
-  ROUND(SUM(ad_spend) / NULLIF(SUM(revenue), 0), 2) AS tacos,
-  COUNTIF(days_of_cover < 15) AS low_stock_skus
-FROM `airbyte-demo-461419.dbt_pmishra.mrt_kpi_daily`
-WHERE date = CURRENT_DATE() - 1
+![Slack Query](https://github.com/user-attachments/assets/91ebcfbb-133c-4940-a5d9-61fbcdfea124)
+
 🎯 This would be used to alert:
 
 Yesterday’s revenue
@@ -107,10 +99,10 @@ Components:
 
 🗂️ Filter by SKU and Date
 
-🔗 [Insert Looker Studio link here if public or include screenshot]
+🔗 https://drive.google.com/file/d/1ptfjfwGwgAVmWaLlxZ4PWJoYHIlbSUvz/view?usp=sharing
 
 📽️ Loom Video Walkthrough
-[Insert Loom link here]
+
 
 Covers:
 
