@@ -62,7 +62,7 @@ All tests are run and verified via dbt Cloud.
 
 🔁 CI/CD in dbt Cloud
 
-![DBT Build](https://github.com/PrajjvalMishra/data-ops-pipeline/actions/workflows/dbt.yml/badge.svg)
+![![DBT Build](https://github.com/PrajjvalMishra/data-ops-pipeline/actions/workflows/dbt.yml/badge.svg?branch=PrajjvalMishra-patch-1)](https://github.com/PrajjvalMishra/data-ops-pipeline/actions/workflows/dbt.yml)
 
 dbt Cloud Job created with steps:
 
