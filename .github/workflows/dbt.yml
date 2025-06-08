@@ -7,7 +7,6 @@ on:
 jobs:
   dbt-job:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -17,30 +16,30 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dbt-bigquery
+      - name: Install dbt
         run: pip install dbt-bigquery
 
-      - name: Set up GCP credentials
+      - name: Set up credentials
         run: |
           echo "${{ secrets.GCP_KEY }}" > /tmp/gcp_key.json
           chmod 600 /tmp/gcp_key.json
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp_key.json
 
-      - name: Create dbt profiles.yml
+      - name: Create profiles.yml
         run: |
           mkdir -p ~/.dbt
-          cat > ~/.dbt/profiles.yml <<EOF
-default:
-  target: dev
-  outputs:
-    dev:
-      type: bigquery
-      method: service-account
-      project: airbyte-demo-461419
-      dataset: dbt_pmishra
-      keyfile: /tmp/gcp_key.json
-EOF
+          cat << 'EOF' > ~/.dbt/profiles.yml
+          default:
+            target: dev
+            outputs:
+              dev:
+                type: bigquery
+                method: service-account
+                project: airbyte-demo-461419
+                dataset: dbt_pmishra
+                keyfile: /tmp/gcp_key.json
+          EOF
 
       - name: Run dbt
         run: |
