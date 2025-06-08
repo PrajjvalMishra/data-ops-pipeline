@@ -133,6 +133,6 @@ The following stretch items were intentionally not implemented due to constraint
 
 - **SP-API Retry Logic**: Not applicable as real API credentials were not shared.
 - **Pytest Unit Tests**: dbt handles all SQL logic and testing; no Python transformation layer present.
-- **Metaplane Monitoring**: Requires integration with live data; simulated alerting logic used instead.
+- **Metaplane Monitoring**: Requires integration with live data; simulated alerting logic used instead Check.
 
 > All components are ready to be extended with these features once live credentials are available.
