@@ -135,4 +135,4 @@ The following stretch items were intentionally not implemented due to constraint
 - **Pytest Unit Tests**: dbt handles all SQL logic and testing; no Python transformation layer present.
 - **Metaplane Monitoring**: Requires integration with live data; simulated alerting logic used instead.
 
-> All components are ready to be extended with these features once live credentials are available.
+> All components are ready to be extended with these features once live credentials are available. check
