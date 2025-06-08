@@ -20,19 +20,17 @@ jobs:
           python-version: '3.11'
 
       - name: Install dbt
-        run: |
-          pip install dbt-bigquery
+        run: pip install dbt-bigquery
 
-      - name: Set up credentials
-        run: |
-          echo "${{ secrets.GCP_KEY }}" > /tmp/gcp_key.json
+      - name: Set up GCP credentials
+        run: echo "${{ secrets.GCP_KEY }}" > /tmp/gcp_key.json
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp_key.json
 
-      - name: Create profiles.yml
+      - name: Create dbt profiles.yml
         run: |
           mkdir -p ~/.dbt
-          echo "default:" > ~/.dbt/profiles.yml
+          echo "default:" >> ~/.dbt/profiles.yml
           echo "  target: dev" >> ~/.dbt/profiles.yml
           echo "  outputs:" >> ~/.dbt/profiles.yml
           echo "    dev:" >> ~/.dbt/profiles.yml
@@ -41,6 +39,7 @@ jobs:
           echo "      project: airbyte-demo-461419" >> ~/.dbt/profiles.yml
           echo "      dataset: dbt_pmishra" >> ~/.dbt/profiles.yml
           echo "      keyfile: /tmp/gcp_key.json" >> ~/.dbt/profiles.yml
+          echo "      threads: 1" >> ~/.dbt/profiles.yml
 
       - name: Run dbt
         env:
