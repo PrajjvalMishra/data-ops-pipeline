@@ -31,14 +31,14 @@ jobs:
           mkdir -p ~/.dbt
           cat << 'EOF' > ~/.dbt/profiles.yml
           default:
-            target: "dev"
+            target: dev
             outputs:
               dev:
-                type: "bigquery"
-                method: "service-account"
-                project: "airbyte-demo-461419"
-                dataset: "dbt_pmishra"
-                keyfile: "/tmp/gcp_key.json"
+                type: bigquery
+                method: service-account
+                project: airbyte-demo-461419
+                dataset: dbt_pmishra
+                keyfile: /tmp/GCP_KEY.json"
           EOF
 
       - name: Run dbt
