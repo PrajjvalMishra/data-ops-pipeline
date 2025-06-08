@@ -38,7 +38,7 @@ jobs:
                 method: service-account
                 project: airbyte-demo-461419
                 dataset: dbt_pmishra
-                keyfile: /tmp/GCP_KEY.json"
+                keyfile: /tmp/GCP_KEY.json
           EOF
 
       - name: Run dbt
