@@ -43,6 +43,7 @@ jobs:
 
       - name: Run dbt
         run: |
+          dbt deps
           dbt build
           dbt test
         env:
