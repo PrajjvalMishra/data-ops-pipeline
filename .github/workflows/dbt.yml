@@ -2,14 +2,11 @@ name: dbt Run & Test
 
 on:
   push:
-    branches:
-      - main
-      - PrajjvalMishra-patch-1
+    branches: [ "**" ]
 
 jobs:
   dbt-job:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -17,34 +14,37 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dbt
         run: pip install dbt-bigquery
 
-      - name: Set up GCP credentials
-        run: echo "${{ secrets.GCP_KEY }}" > /tmp/gcp_key.json
+      - name: Set up credentials
+        run: |
+          echo "${{ secrets.GCP_KEY }}" > /tmp/gcp_key.json
+          chmod 600 /tmp/gcp_key.json
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp_key.json
 
-      - name: Create dbt profiles.yml
+      - name: Create profiles.yml
         run: |
           mkdir -p ~/.dbt
-          echo "default:" >> ~/.dbt/profiles.yml
-          echo "  target: dev" >> ~/.dbt/profiles.yml
-          echo "  outputs:" >> ~/.dbt/profiles.yml
-          echo "    dev:" >> ~/.dbt/profiles.yml
-          echo "      type: bigquery" >> ~/.dbt/profiles.yml
-          echo "      method: service-account" >> ~/.dbt/profiles.yml
-          echo "      project: airbyte-demo-461419" >> ~/.dbt/profiles.yml
-          echo "      dataset: dbt_pmishra" >> ~/.dbt/profiles.yml
-          echo "      keyfile: /tmp/gcp_key.json" >> ~/.dbt/profiles.yml
-          echo "      threads: 1" >> ~/.dbt/profiles.yml
+          cat << 'EOF' > ~/.dbt/profiles.yml
+          default:
+            target: dev
+            outputs:
+              dev:
+                type: bigquery
+                method: service-account
+                project: airbyte-demo-461419
+                dataset: dbt_pmishra
+                keyfile: /tmp/gcp_key.json
+          EOF
 
       - name: Run dbt
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp_key.json
         run: |
           dbt deps
           dbt build
           dbt test
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp_key.json
