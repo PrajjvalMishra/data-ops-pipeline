@@ -21,7 +21,7 @@ jobs:
 
       - name: Set up credentials
         run: |
-          echo ${{ secrets.GCP_KEY }} > /tmp/gcp_key.json
+          echo "${{ secrets.GCP_KEY }}" > /tmp/gcp_key.json
           chmod 600 /tmp/gcp_key.json
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp_key.json
