@@ -45,6 +45,5 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp_key.json
         run: |
-          dbt deps
           dbt build
           dbt test
